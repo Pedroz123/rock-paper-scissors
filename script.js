@@ -33,7 +33,23 @@ function getComputerString(number){
             return computeString = "paper";
         
         default:
-            return computeString = "scissor";
+            return computeString = "scissors";
          
     }
+}
+
+
+
+// Do a function that ask the user what object they want to use between rock, peper and scissors
+// Using the promp 
+
+// get the answer of the function in a variable 
+//obtain the object of the user with the promt
+// change the object to lower case
+// return the answer
+const getAnswer = getHumanChoice();
+console.log(getAnswer);
+function getHumanChoice(){
+    let getAnswer = prompt("Choose between rock, paper and scissors");
+    return getAnswer.toLowerCase();
 }
