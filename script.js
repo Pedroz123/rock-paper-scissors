@@ -98,20 +98,51 @@ let computerScore = 0;
     if (human == 2){
         console.log("You win!!. ",getHumanAnswer," beats ",getComputerAnswer);
         humanScore++;
+        return "human";
     }else if (human == 0){
         console.log("You lose!. ", getHumanAnswer," lose againts ", getComputerAnswer);
         computerScore++;
+        return "computer";
     }else {
         console.log("WOW draw", getHumanAnswer,getComputerAnswer)
     }
    
 }
 
-getHumanAnswer = getHumanChoice();
-getComputerAnswer = getComputerString(randomNumber);
+
+function playGame(){
+
+    let count = 0;
+    let human = 0;
+    let comp = 0;
+
+    while(count < 5){
+
+    getHumanAnswer = getHumanChoice();
+    getComputerAnswer = getComputerString(randomNumber);
 
 
-console.log(getHumanAnswer);
-console.log(getComputerAnswer);
+    console.log(getHumanAnswer);
+    console.log(getComputerAnswer);
 
-playRound(getHumanAnswer,getComputerAnswer)
+    let getScore= playRound(getHumanAnswer,getComputerAnswer)
+
+    if (getScore == "human"){
+        human++;
+    }else if (getScore == "computer"){
+        comp++;
+    }
+
+    count++;
+    }
+
+    if (human > comp){
+        console.log("human win  with ", human, " rounds");
+    }else if (human < comp){
+        console.log("computer win with ", comp, "rounds");
+    }else {
+        console.log("ITS A DRAK !!!")
+    }
+}
+
+playGame();
