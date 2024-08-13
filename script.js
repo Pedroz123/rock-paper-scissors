@@ -11,17 +11,16 @@ console.log("Hello world!!");
 // Calculate a number using Math.floor() that will round it downwarse 
 // Multiply the random number with the parameter
 // Return the result of the multiplication
-const randomNumber = getComputerChoice(3);
-function getComputerChoice(max){
-    return Math.floor(Math.random() * max);
+const randomNumber = getComputerChoice();
+function getComputerChoice(){
+    return Math.floor(Math.random() * 3);
 }
 console.log(randomNumber);
 // Create a function with number that i get with the last function
 // if my number is 2 is going to be rock
 // else if my number is 1 my number is going to be paper
 // else my number is another number than is going to be scissors
-let outputString = getComputerString(randomNumber);
-console.log(outputString);
+
 
 function getComputerString(number){
     let computeString;
@@ -47,9 +46,72 @@ function getComputerString(number){
 //obtain the object of the user with the promt
 // change the object to lower case
 // return the answer
-const getAnswer = getHumanChoice();
-console.log(getAnswer);
+
 function getHumanChoice(){
     let getAnswer = prompt("Choose between rock, paper and scissors");
     return getAnswer.toLowerCase();
 }
+
+// user score
+let humanScore = 0;
+// computer score
+let computerScore = 0;
+
+
+// A function that get the answer of the computer and the human. Compare the answer of each on of them and then return the winner
+// nine posibilities 
+
+
+// set two scores just for the function to know how win that round
+// the human answer pass thrwo a switch statement
+// Compare the human answer with the computer answer
+
+ function playRound(getHumanAnswer,getComputerAnswer){
+
+    
+    let human = 1;
+    switch (getComputerAnswer){
+        case "rock":
+            if (getHumanAnswer == "paper"){
+                human++;
+            }else if (getHumanAnswer == "scissors"){
+                human--;
+            }
+            break;
+
+        case "paper":
+            if (getHumanAnswer == "scissors"){
+                human++;
+            }else if (getHumanAnswer == "rock"){
+                human--;
+            }
+            break;
+        case "scissors":
+            if (getHumanAnswer == "rock"){
+                human++;
+            }else if (getHumanAnswer == "paper"){
+                human--;
+            }
+            break;
+    }
+    console.log(human);
+    if (human == 2){
+        console.log("You win!!. ",getHumanAnswer," beats ",getComputerAnswer);
+        humanScore++;
+    }else if (human == 0){
+        console.log("You lose!. ", getHumanAnswer," lose againts ", getComputerAnswer);
+        computerScore++;
+    }else {
+        console.log("WOW draw", getHumanAnswer,getComputerAnswer)
+    }
+   
+}
+
+getHumanAnswer = getHumanChoice();
+getComputerAnswer = getComputerString(randomNumber);
+
+
+console.log(getHumanAnswer);
+console.log(getComputerAnswer);
+
+playRound(getHumanAnswer,getComputerAnswer)
